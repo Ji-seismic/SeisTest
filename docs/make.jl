@@ -3,7 +3,6 @@ using SeisTest
 using Pkg
 Pkg.add("SeisProcessing")
 Pkg.add("DSP")
-Pkg.add("SeisPlot")
 makedocs(
     sitename = "SeisTest",
     format = Documenter.HTML(prettyurls = get(ENV, "CI", nothing)== "true"),

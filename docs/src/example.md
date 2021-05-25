@@ -36,3 +36,10 @@ y = dsblend(d,PARAM1,1);
 dn= dsblend(y,PARAM1,-1);
 heatmap(dn)
 ```
+
+## Remove the blending noise by Robust SWCGP
+```@example example
+lp=1;imax=20;
+dr=SeisSWCGP(dn,operator,param,15,0.7,lp,imax)
+heatmap(dr)
+```

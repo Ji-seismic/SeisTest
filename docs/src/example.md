@@ -9,7 +9,7 @@ This example contains three steps
 ## Generate synthetic data
 
 ```@example example
-using SeisProcessing, SeisTest, DSP, Plots
+using SeisProcessing, SeisTest, DSP, Plots, SeisPlot
 M=zeros(400,81);
 M[100,50]=1;
 M[200,30]=1;

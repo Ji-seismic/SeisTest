@@ -9,7 +9,7 @@ This example contains three steps
 ## Generate synthetic data
 
 ```@example example
-using SeisProcessing, SeisTest, DSP
+using SeisProcessing, SeisTest, DSP, SeisPlot
 M=zeros(400,81);
 M[100,50]=1;
 M[200,30]=1;
@@ -23,25 +23,5 @@ p=collect(-0.04:0.001:0.04);
 dt=0.004;
 param=[offset,p,dt];
 d=operator(M,param,1,2,20);
-```
-## Blending and pseudo-deblending the synthetic data manually
-```@example example
-fold=3;
-(nt,ns)=size(d);
-tt=tgenerator(dt,nt,ns,fold);
-PARAM1=[tt,nt,ns,dt];
-y = dsblend(d,PARAM1,1);
-dn= dsblend(y,PARAM1,-1);
-
-```
-## Remove the blending noise by three different Greedy Pursuit methods
-```@example example
-lp=1;imax=20;
-dr_mp=SeisMP(dn,operator,param,1,lp,imax)
-snr_mp=MeasureSNR(d, dr_mp; db=false)
-dr_swcgp=SeisSWCGP(dn,operator,param,1,0.7,lp,imax)
-snr_swcgp=MeasureSNR(d, dr_swcgp; db=false)
-println("SNR of MP after 1 iteration: ", snr_mp)
-println("SNR of SWCGP after 1 iteration: ", snr_swcgp)
-
+SeisPlotTX(d,scal=maximum(d),fignum=1,style="wiggles",xcur=1,dy=0.004,title="(Clean)",titlesize=10,xlabel="Trace number",ylabel="Time (s)",labelsize=8,ticksize=8);
 ```

@@ -1,10 +1,20 @@
 using Documenter
 using SeisTest
-
+using Pkg
+Pkg.add("SeisProcessing")
+Pkg.add("DSP")
 makedocs(
     sitename = "SeisTest",
-    format = Documenter.HTML(),
-    modules = [SeisTest]
+    format = Documenter.HTML(prettyurls = get(ENV, "CI", nothing)== "true"),
+    modules = [SeisTest],
+	pages = [
+          "Home" => "index.md",
+		  "Library" => Any[
+ 	 			"Public" => "public.md",
+ 	 ],
+	      "Example"=>"example.md",
+		  "Publication"=>"publication.md"
+		],
 )
 
 # Documenter can also automatically deploy documentation to gh-pages.

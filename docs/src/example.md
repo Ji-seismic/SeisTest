@@ -9,7 +9,7 @@ This example contains three steps
 ## Generate synthetic data
 
 ```@example example
-using SeisProcessing, SeisTest, DSP, Plots, SeisPlot
+using SeisProcessing, SeisTest, DSP, Plots
 M=zeros(400,81);
 M[100,50]=1;
 M[200,30]=1;
@@ -23,7 +23,7 @@ p=collect(-0.04:0.001:0.04);
 dt=0.004;
 param=[offset,p,dt];
 d=operator(M,param,1,2,20);
-SeisPlotTX(d,scal=maximum(d),style="wiggles",xcur=1,dy=0.004,title="(Clean)",titlesize=10,xlabel="Trace number",ylabel="Time (s)",labelsize=8,ticksize=8)
+heatmap(d)
 ```
 ## Blending and pseudo-deblending the synthetic data manually
 ```@example example
@@ -34,4 +34,5 @@ PARAM1=[tt,nt,ns,dt];
 y = dsblend(d,PARAM1,1);
 dn= dsblend(y,PARAM1,-1);
 SeisPlotTX(dn,scal=maximum(d),style="wiggles",xcur=1,dy=0.004,title="(Pseudo-deblended)",titlesize=10,xlabel="Trace number",ylabel="Time (s)",labelsize=8,ticksize=8)
+heatmap(dn)
 ```

@@ -23,7 +23,6 @@ p=collect(-0.04:0.001:0.04);
 dt=0.004;
 param=[offset,p,dt];
 d=operator(M,param,1,2,20);
-heatmap(d)
 ```
 ## Blending and pseudo-deblending the synthetic data manually
 ```@example example

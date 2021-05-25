@@ -33,6 +33,5 @@ tt=tgenerator(dt,nt,ns,fold);
 PARAM1=[tt,nt,ns,dt];
 y = dsblend(d,PARAM1,1);
 dn= dsblend(y,PARAM1,-1);
-SeisPlotTX(dn,scal=maximum(d),style="wiggles",xcur=1,dy=0.004,title="(Pseudo-deblended)",titlesize=10,xlabel="Trace number",ylabel="Time (s)",labelsize=8,ticksize=8)
 heatmap(dn)
 ```

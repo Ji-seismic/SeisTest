@@ -1,5 +1,5 @@
 module SeisTest
-
-greet() = print("Hello World!")
-
+    using Interpolations,Requires,FFTW,LinearAlgebra,DSP
+    include("MP/MP.jl")
+    include("Tools/Tools.jl")
 end # module
